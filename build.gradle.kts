@@ -1,10 +1,10 @@
 plugins {
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "1.9.10"
     application
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+group = "ru.dumdumbich"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -23,5 +23,15 @@ kotlin {
 }
 
 application {
-    mainClass.set("MainKt")
+    mainClass.set("ru.dumdumbich.ftpmirror.AppKt")
+}
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "ru.dumdumbich.ftpmirror.AppKt"
+    }
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
