@@ -1,3 +1,5 @@
+package ru.dumdumbich.ftpmirror
+
 fun main(args: Array<String>) {
     println("Hello World!")
 
